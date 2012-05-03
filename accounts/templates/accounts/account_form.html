@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% load crispy_forms_tags %}
+
+{% block title %}{% if form.instance.id %}Edit{%else%}Create{%endif%} Account{% endblock %}
+{%block navbar%}
+  <li><a href="/">Home</a></li>
+  <li><a href="/about/iguzu/">About</a></li>
+  <li><a href="/about/contact/">Contact</a></li>
+  <li class="active"><a href="/accounts">Accounts</a></li>	  
+			{%endblock%}
+	
+{% block content %}
+    <h2>{% if form.instance.id %}Edit {{account.name}}{%else%}Create an Account{%endif%}</h2>
+	<br>
+{% crispy form %}
+{% endblock %}

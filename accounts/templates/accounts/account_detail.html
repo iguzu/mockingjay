@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+{% block title %}Add Account{% endblock %}
+{%block navbar%}
+  <li><a href="/">Home</a></li>
+  <li><a href="/about/iguzu/">About</a></li>
+  <li><a href="/about/contact/">Contact</a></li>
+  <li class="active"><a href="/accounts">Accounts</a></li>	  
+{%endblock%}
+
+{% block content %}
+<div style="padding-bottom:10px;"><a style="padding:0 5px 0px 0px;" href="{% url account_list%}">Back</a></div>
+<div class="row" >
+ <div class="span8 well">
+    <span style="font-weight: bold;font-size: 24px;">{{account.name}}</span><a style="padding:0 5px 0 10px;" href="{% url account_edit account.id%}">Edit</a> | <a style="padding:0 5px 0 5px;" href="{% url account_delete account.id%}">Delete</a>
+<dl class="dl-horizontal">
+<dt>Username:</dt><dd>{{account.username}}</dd>
+<dt>Password:</dt><dd>{{account.password}}</dd>
+</dl>
+ </div>
+ <div class="span2">{{account.date_created}}</div>
+ <div></div>
+</div>
+<br>
+{% endblock %}

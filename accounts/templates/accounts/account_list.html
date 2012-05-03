@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% load taggit_extras %}
+{% get_taglist as tags for 'accounts.Account' %}
+{% block title %}Home{% endblock %}
+			{%block navbar%}
+              <li><a href="/">Home</a></li>
+              <li><a href="/about/iguzu/">About</a></li>
+              <li><a href="/about/contact/">Contact</a></li>
+			  <li class="active"><a href="/accounts">Accounts</a></li>	  
+			{%endblock%}
+
+{% block content %}
+    <h2>Accounts</h2>
+<a href={% url account_create %}>Create a New Account</a><br><br>
+<div class="row">
+<div class="span8">
+<table class="table table-striped table-condensed">
+<thead><td>Name</td><td>Username</td><td>Password</td><td></td></thead>
+<tbody>
+{% for account in object_list %}
+<tr><td><a href="{% url account_detail account.id %}">{{account.name}}</a></td><td>{{account.username}}</td><td>--</td></tr>
+{% endfor %}
+</tbody>
+</table>
+</div>
+</div>
+{% endblock %}

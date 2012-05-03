@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% block title %}Add Account{% endblock %}
+{%block navbar%}
+  <li><a href="/">Home</a></li>
+  <li><a href="/about/iguzu/">About</a></li>
+  <li><a href="/about/contact/">Contact</a></li>
+  <li class="active"><a href="/accounts">Accounts</a></li>	  
+{%endblock%}
+{% block content %}
+<fieldset><legend>Confirm Deletion</legend>
+<form method="post">
+{% csrf_token %}
+<div class="alert alert-error">Do you really want to Delete <strong>{{object.name}}</strong>?
+ {%if extra_message%}
+ <br><h2>{{extra_message}}</h2>
+ {%endif%}
+</div>
+<div class="buttonHolder"><input type="submit" name="submit" value="Delete" class="btn btn-primary" id="submit-id-submit"/> or <a href="{% url account_detail object.id%}">Cancel</a></div>
+</form>
+</fieldset>
+{% endblock %}

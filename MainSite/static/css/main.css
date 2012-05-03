@@ -1,0 +1,8 @@
+.sidebar-unit {
+	padding: 10px;
+  	margin-bottom: 30px;
+  	background-color: #eeeeee;
+  	-webkit-border-radius: 6px;
+    -moz-border-radius: 6px;
+    border-radius: 6px;
+}
