@@ -2,7 +2,6 @@ from crispy_forms.helper import FormHelper #@UnresolvedImport
 from crispy_forms.layout import Submit, Layout, Fieldset, ButtonHolder, Div, HTML, Field #@UnresolvedImport
 
 from django.core.urlresolvers import reverse
-import logging
 from django.forms import ModelForm
 from accounts.models import Account
 
@@ -14,10 +13,6 @@ class AccountForm(ModelForm):
     def __init__(self, *args, **kwargs):
         self.helper = FormHelper()
         self.helper.form_id = 'id-accountForm'
-#        self.helper.form_method = 'post'
-#        self.helper.form_action = ''
-#        self.helper.form_class = 'form-horizontal'
-        logging.critical('test')
         instance = kwargs.get('instance')    
         if instance:
             submit = Submit('submit', 'Update', css_class='btn-primary')
@@ -45,5 +40,3 @@ class AccountForm(ModelForm):
         )
            
         super(AccountForm, self).__init__(*args, **kwargs)
-        logging.critical(kwargs)
-        logging.critical(self.instance)

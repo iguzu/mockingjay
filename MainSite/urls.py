@@ -9,7 +9,7 @@ admin.autodiscover()
 urlpatterns = patterns('',
     (r'^about/(\w+)/$', about_pages),
     (r'^accounts', include('accounts.urls')),
-    (r'^$',direct_to_template, {'template':'home.html',}),
+    (r'^$',direct_to_template, {'template':'home.html'},),
     (r'^auth', include('auth.urls')),
 
     # Examples:s

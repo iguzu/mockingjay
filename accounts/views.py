@@ -1,8 +1,5 @@
-# import datetime
-from django.contrib.auth.decorators import login_required
 from django import http
 from django.core.urlresolvers import reverse_lazy, reverse
-# from django.shortcuts import get_object_or_404
 from django.views.generic import ListView, CreateView, DetailView, UpdateView, DeleteView
 from django.core import serializers
 
@@ -11,8 +8,6 @@ from django.views.generic.list import BaseListView
 
 from accounts.forms import AccountForm
 from models import Account
-from django.utils.decorators import method_decorator
-
 
 class DataResponseMixin(object):
     data_type = 'application/json'
@@ -32,12 +27,7 @@ class DataResponseMixin(object):
 
 class AccountListView(ListView):
     model = Account
-#    queryset = queryset=Account.objects.order_by("name")
     template_name = 'accounts/account_list.html'
-
-    @method_decorator(login_required)
-    def dispatch(self, *args, **kwargs):
-        return super(AccountListView, self).dispatch(*args, **kwargs)
 
 class JSONAccountListView(DataResponseMixin, BaseListView):
     model = Account
@@ -58,15 +48,11 @@ class XMLAccountListView(DataResponseMixin, BaseListView):
 class AccountCreateView(CreateView):
     form_class = AccountForm
     model = Account    
-    success_url = reverse_lazy('account_list')
+    def get_success_url(self):
+        return reverse('account_list')
     
 class AccountDetailView(DetailView):
     model = Account
-#    def get(self,*args,**kwargs):
-#        if 'pk' in kwargs:
-#            my_object = get_object_or_404(Account, pk=kwargs['pk'])
-#            my_object.last_accessed = datetime.datetime.now()
-#            my_object.save()
             
 class JSONAccountDetailView(DataResponseMixin, BaseDetailView):
     model = Account
