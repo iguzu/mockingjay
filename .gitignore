@@ -2,3 +2,5 @@
 .project
 .pydevproject
 .settings
+sqlite.db
+manage.py
